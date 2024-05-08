@@ -18,7 +18,7 @@ const CheckOut = () => {
         const booking = { name, email, price, img, date, service: title, service_id: _id }
         console.log(booking);
 
-        fetch('http://localhost:5000/bookings', {
+        fetch('https://cars-doctor-server-teal.vercel.app/bookings', {
             method: 'POST',
             headers: {
                 "content-type": "application/json"

@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../provider/AuthProvider";
+import axios from "axios";
 
 const Login = () => {
 
     const { loginUser } = useContext(AuthContext)
+    const location = useLocation()
+    const navigate = useNavigate()
 
     const handleLogin = (e) => {
         e.preventDefault()
@@ -15,6 +18,8 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 console.log(result.user)
+                //get access token
+                navigate(location?.state ? location.state : '/')
             })
             .catch(error => {
                 console.log(error.message);
